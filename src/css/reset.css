@@ -18,6 +18,19 @@ ul {
   padding: 0;
   list-style: none;
 }
+input,
+textarea,
+button {
+  padding: 0;
+  border: none;
+  font-family: inherit;
+  color: currentColor;
+  background-color: transparent;
+}
+input {
+  font-family: inherit;
+  border: none;
+}
 
 a {
   color: currentColor;
