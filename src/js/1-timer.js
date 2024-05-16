@@ -10,4 +10,4 @@ const options = {
     console.log(selectedDates[0]);
   },
 };
-flatpickr('#datetime-picker');
+flatpickr('#datetime-picker', options);
