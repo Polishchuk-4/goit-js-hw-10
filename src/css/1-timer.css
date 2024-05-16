@@ -1,1 +1,51 @@
 @import url('./reset.css');
+body {
+  padding-top: 100px;
+  width: fit-content;
+  margin: 0 auto;
+}
+input[type='text'] {
+  padding-left: 16px;
+  width: 272px;
+  height: 40px;
+  margin-right: 8px;
+  margin-bottom: 32px;
+  border: 1px solid rgb(128, 128, 128);
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+}
+button[type='button'] {
+  width: 75px;
+  height: 40px;
+  font-size: 16px;
+
+  font-weight: 500;
+  border-radius: 8px;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+  color: rgb(152, 152, 152);
+  background: rgb(207, 207, 207);
+}
+.timer {
+  display: flex;
+  column-gap: 24px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.value {
+  color: rgb(46, 47, 66);
+  font-size: 40px;
+  line-height: 48px;
+  letter-spacing: 0.04em;
+}
+.label {
+  color: rgb(46, 47, 66);
+  line-height: 24px;
+  letter-spacing: 0;
+  text-align: left;
+}
