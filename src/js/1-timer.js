@@ -1,5 +1,7 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 let userSelectedDate;
 const buttonStart = document.querySelector('[data-start]');
@@ -19,7 +21,13 @@ const options = {
   onClose(selectedDates) {
     userSelectedDate = selectedDates[0].getTime();
     if (userSelectedDate - Date.now() < 0) {
-      alert('Please choose a date in the future');
+      iziToast.error({
+        message: 'Please choose a date in the future',
+        position: 'topRight',
+        close: false,
+        progressBar: false,
+        timeout: 2000,
+      });
       return;
     }
     buttonStart.disabled = false;
@@ -44,16 +52,19 @@ function startTimer() {
       userSelectedDate - Date.now()
     );
 
-    outputDate.days.textContent = days;
-    outputDate.hours.textContent = hours;
-    outputDate.minutes.textContent = minutes;
-    outputDate.seconds.textContent = seconds;
-
-    if (userSelectedDate < Date.now()) {
+    if (userSelectedDate < Date.now() + 1000) {
       inputDateTime.disabled = false;
       clearInterval(intervalId);
     }
+
+    outputDate.days.textContent = addLeadingZero(days);
+    outputDate.hours.textContent = addLeadingZero(hours);
+    outputDate.minutes.textContent = addLeadingZero(minutes);
+    outputDate.seconds.textContent = addLeadingZero(seconds);
   }, 1000);
+}
+function addLeadingZero(value) {
+  return `${value}`.padStart(2, '0');
 }
 
 function convertMs(ms) {
