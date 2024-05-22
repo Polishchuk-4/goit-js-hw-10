@@ -1,22 +1,22 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 const form = document.querySelector('form');
-let inputTimeDelay;
+let inputTimeDelay = document.querySelector('input[name="delay"]');
 
 form.addEventListener('submit', event => {
   event.preventDefault();
   const selectedState = document.querySelector(
     'input[name="state"]:checked'
   ).value;
-  inputTimeDelay = document.querySelector('input[name="delay"]');
   const promise = new Promise((resolve, reject) => {
+    const inputTimeDelayValue = +inputTimeDelay.value;
     setTimeout(() => {
       if (selectedState === 'fulfilled') {
-        resolve(inputTimeDelay.value);
+        resolve(inputTimeDelayValue);
       } else {
-        reject(inputTimeDelay.value);
+        reject(inputTimeDelayValue);
       }
-    }, +inputTimeDelay.value);
+    }, inputTimeDelayValue);
   });
   promise
     .then(value => {
