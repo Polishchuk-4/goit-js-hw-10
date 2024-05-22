@@ -1,1 +1,43 @@
 @import url('./reset.css');
+.form {
+}
+fieldset {
+  width: 360px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 54px;
+  margin-bottom: 24px;
+}
+input,
+fieldset {
+  border: 1px solid rgb(128, 128, 128);
+  border-radius: 4px;
+}
+legend {
+  margin-left: 28px;
+}
+form label:first-child {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  gap: 8px;
+}
+input[type='number'] {
+  box-sizing: border-box;
+  width: 360px;
+  height: 40px;
+  padding-left: 20px;
+}
+button {
+  width: 360px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgb(78, 117, 255);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+}

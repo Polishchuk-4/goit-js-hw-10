@@ -38,6 +38,7 @@ const options = {
 flatpickr('#datetime-picker', options);
 
 buttonStart.addEventListener('click', event => {
+  event.preventDefault();
   buttonStart.classList.remove('button-active');
 
   startTimer();
