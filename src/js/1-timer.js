@@ -28,10 +28,12 @@ const options = {
         progressBar: false,
         timeout: 2000,
       });
+      if (buttonStart.disabled === false) {
+        disableButtonStart();
+      }
       return;
     }
-    buttonStart.disabled = false;
-    buttonStart.classList.add('button-active');
+    enableButtonStart();
   },
 };
 
@@ -39,14 +41,13 @@ flatpickr('#datetime-picker', options);
 
 buttonStart.addEventListener('click', event => {
   event.preventDefault();
-  buttonStart.classList.remove('button-active');
 
   startTimer();
 });
 
 function startTimer() {
   inputDateTime.disabled = true;
-  buttonStart.disabled = true;
+  disableButtonStart();
 
   const intervalId = setInterval(() => {
     const { days, hours, minutes, seconds } = convertMs(
@@ -85,4 +86,14 @@ function convertMs(ms) {
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
   return { days, hours, minutes, seconds };
+}
+function enableButtonStart() {
+  buttonStart.disabled = false;
+  buttonStart.classList.add('button-active');
+}
+
+function disableButtonStart() {
+  buttonStart.disabled = true;
+  buttonStart.classList.remove('button-active');
+  console.log('disable');
 }
